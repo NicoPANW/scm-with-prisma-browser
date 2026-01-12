@@ -1,0 +1,65 @@
+# Extended Prisma SASE Integration (Browser Management)
+
+> ⚠️ **Disclaimer: POC Grade Code**
+>
+> This code is currently at **Proof of Concept (POC) grade**. It is intended for testing and development purposes only. It has not been fully vetted for production environments and is not officially supported by Palo Alto Networks. Use at your own risk.
+
+## Overview
+
+This repository contains a modified version of the Content Pack for the **Palo Alto Networks - Prisma SASE** integration (formerly Prisma Access) for Cortex XSOAR/XSIAM.
+
+The primary goal of this modification is to introduce support for the **Prisma Browser API**, enabling programmatic management of browser users, devices, and policies directly from Cortex.
+
+This extends the capabilities of the official marketplace pack found here:
+[Prisma Access on Cortex Marketplace](https://cortex.marketplace.pan.dev/marketplace/details/PrismaAccess/)
+
+## New Capabilities
+
+The script has been updated to support the `/seb-api/v1/` endpoints. The following capabilities have been added:
+
+### 1. User Management
+* **List Users:** Retrieve a list of users configured for Browser Access.
+
+### 2. Device Management
+* **List Devices:** Search and list devices with filtering options.
+* **Get Device Details:** Retrieve detailed information for a specific device.
+* **Lifecycle Actions:** Perform the following actions on devices:
+    * Suspend
+    * Resume
+    * Archive
+    * Restore
+    * Delete
+
+### 3. Group & Policy Objects
+* **List Device Groups:** View device groups.
+* **List User Groups:** View user groups.
+* **List Applications:** View configured applications.
+* **List User Requests:** View access requests made by users.
+
+## Added Commands
+
+The following commands have been implemented in this version:
+
+| Command | Description |
+| :--- | :--- |
+| `!prisma-sase-browser-access-user-list` | Lists all users in the Browser Management scope. |
+| `!prisma-sase-browser-access-device-list` | Lists devices (supports filtering by hostname/username). |
+| `!prisma-sase-browser-access-device-get` | Returns details for a specific device by ID. |
+| `!prisma-sase-browser-access-device-suspend` | Suspends a specific device (by ID or list of IDs). |
+| `!prisma-sase-browser-access-device-resume` | Resumes a suspended device. |
+| `!prisma-sase-browser-access-device-archive` | Archives a device. |
+| `!prisma-sase-browser-access-device-restore` | Restores an archived device. |
+| `!prisma-sase-browser-access-device-delete` | Deletes a device record. |
+| `!prisma-sase-browser-access-device-group-list` | Lists device groups. |
+| `!prisma-sase-browser-access-user-group-list` | Lists user groups. |
+| `!prisma-sase-browser-access-application-list` | Lists applications. |
+| `!prisma-sase-browser-access-user-request-list` | Lists user access requests. |
+
+## Configuration
+
+To use this script:
+1.  Ensure your **Prisma SASE** instance is configured with the correct **TSG ID**, **Client ID**, and **Client Secret**.
+2.  The Base URL should remain the standard API gateway (e.g., `https://api.sase.paloaltonetworks.com`). The script automatically handles the `/seb-api/v1/` routing.
+3.  Upload the yaml file into Cortex BYOI
+
+
