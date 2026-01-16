@@ -72,4 +72,5 @@ To use this script:
 2.  The Base URL should remain the standard API gateway (e.g., `https://api.sase.paloaltonetworks.com`). The script automatically handles the `/seb-api/v1/` routing.
 3.  Upload the yaml file into Cortex BYOI
 
-
+## Things to know
+XSIAM supports real-time correlation rule while XDR not, hence specific correlation rules. 
